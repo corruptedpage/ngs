@@ -25,43 +25,43 @@ def savenload (sorv = 's', notch = '0'):
         time.sleep(0.1)
         os.mkdir(die1)
     time.sleep(0.1)
-    print('Copying persistent')
+    print('Копируем persistent')
     shutil.copytree(die + 'persistent\\', die1 + 'persistent\\')
 
-    print('Copying stats')
+    print('Копируем stats')
     shutil.copytree(die + 'stats\\', die1 + 'stats\\')
 
-    print('Copying world (might take a while)')
+    print('Копируем world (Может занять много времени)')
     shutil.copytree(die + 'world\\', die1 + 'world\\')
 
-    print('Copying player.xml')
+    print('Копируем player.xml')
     shutil.copy(die + 'player.xml', die1 + 'player.xml')
 
-    print('Copying world_state.xml')
+    print('Копируем world_state.xml')
     shutil.copy(die + 'world_state.xml', die1 + 'world_state.xml')
 
-    print('Copying session_numbers.salakieli')
+    print('Копируем session_numbers.salakieli')
     shutil.copy(die + 'session_numbers.salakieli', die1 + 'session_numbers.salakieli')
 
-    print('Copying mod_config.xml')
+    print('Копируем mod_config.xml')
     shutil.copy(die + 'mod_config.xml', die1 + 'mod_config.xml')
 
-    print('Operation completed successfully!')
+    print('Операция завершена успешно!')
 
 
 while 1 == 1:
-    co = int(input('   Menu:\n'
-                   '   1. Save\n'
-                   '   2. Load\n'
-                   '   3. delete save\n'
-                   '   4. instructions\n'
-                   '   IMPORTANT: TYPE A NUMBER OF THE OPTION YOU CHOSSE (1 FOR SAVING, ETC)\n'))
+    co = int(input('   Меню:\n'
+                   '   1. Сохранить\n'
+                   '   2. Загрузить\n'
+                   '   3. Удалить сохранение\n'
+                   '   4. Инструкция\n'
+                   ' ВАЖНО: ВЫБРАТЬ НОМЕР ОПЦИИ (1 ДЛЯ СОХРАНЕНИЯ, НАПРИМЕР)\n'))
     if co != 3:
         if co == 1:
             co = 's'
         else:
             co = 'l'
-        print(f'   Choose save file:')
+        print(f'   Выберите ячейку сохранения:')
         for i in range(b_amount):
             sovr = 'load0' + str(i+1)
             if os.path.exists(var.die + f'{sovr}\\world\\'):
@@ -73,19 +73,19 @@ while 1 == 1:
                 if co == 's':
                     print(f'  #{i+1}')
         co1 = input(f'[1-{b_amount}] >')
-        ch = input("   Are you sure? Press Enter if yes, type anything if you've changed your mind ")
+        ch = input("   Вы уверены? Нажмите [Enter] ничего не вводя, если да. Введите что-то для отмены ")
         if ch == '':
             savenload(co, co1)
     elif co == 3:
-        print('Choose save file:')
+        print('Выберите ячейку сохранения:')
         for i in range(b_amount):
             if os.path.exists(var.die + 'load0' + str(i+1) + '\\world\\'):
                 print(f'#{i+1}')
             else:
                 pass
         co1 = input(f'[1-{b_amount}] >')
-        ch = input('  Are you REALLY sure? Type "yes" to confirm ')
-        if ch == 'yes':
+        ch = input('  Вы ТОЧНО уверены? Напишите "да" чтобы продолжить ')
+        if ch == 'да':
             sovr = 'load0' + co1
             print(sovr)
             shutil.rmtree(var.die + sovr)
@@ -94,7 +94,7 @@ while 1 == 1:
             print('   This save file is now gone forever...')
 
     else:
-        print('   Everything is easy: first you need to choose whether youd like to save or load your save file\n'
-              '   next choose what file # you want.')
+        print('   Все просто: необходимо выбрать сохранить или загрузить игру, потом выбрать ячейку для выгрузки файлов сохранения.'
+              '   \n')
     time.sleep(3)
     os.system('cls')
